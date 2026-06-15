@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>식단 만들기 — planfit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">planfit</a>
+    <div class="nav-links">
+      <a href="index.html">홈</a>
+      <a href="plan.html" class="active">식단 만들기</a>
+      <a href="index.html#info">이용안내</a>
+    </div>
+  </nav>
+
+  <!-- FORM PAGE -->
+  <section class="plan-hero">
+    <h1>나만의 <span class="green">AI 맞춤 식단</span> 만들기</h1>
+    <p>정보를 입력하면 AI가 최적의 식단 플랜을 즉시 생성합니다</p>
+  </section>
+
+  <section class="plan-section">
+    <div class="plan-container">
+
+      <form id="planfit-form">
+
+        <!-- 신체 정보 -->
+        <div class="form-group-title">신체 정보</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>성별</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="gender" value="남성" required /> 남성</label>
+              <label class="radio-label"><input type="radio" name="gender" value="여성" /> 여성</label>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="age">나이</label>
+            <input type="number" id="age" name="age" placeholder="예: 25" min="15" max="70" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="height">키 (cm)</label>
+            <input type="number" id="height" name="height" placeholder="예: 175" min="140" max="220" required />
+          </div>
+          <div class="form-field">
+            <label for="weight">현재 몸무게 (kg)</label>
+            <input type="number" id="weight" name="weight" placeholder="예: 75" min="30" max="200" required />
+          </div>
+        </div>
+
+        <!-- 목표 설정 -->
+        <div class="form-group-title">목표 설정</div>
+        <div class="form-field">
+          <label>운동 목표</label>
+          <div class="goal-group">
+            <label class="goal-card">
+              <input type="radio" name="goal" value="다이어트" required />
+              <div class="goal-content">
+                <span class="goal-icon">🔥</span>
+                <span class="goal-name">다이어트</span>
+                <span class="goal-desc">체지방 감소</span>
+              </div>
+            </label>
+            <label class="goal-card">
+              <input type="radio" name="goal" value="벌크업" />
+              <div class="goal-content">
+                <span class="goal-icon">💪</span>
+                <span class="goal-name">벌크업</span>
+                <span class="goal-desc">근육량 증가</span>
+              </div>
+            </label>
+            <label class="goal-card">
+              <input type="radio" name="goal" value="린매스업" />
+              <div class="goal-content">
+                <span class="goal-icon">⚡</span>
+                <span class="goal-name">린매스업</span>
+                <span class="goal-desc">근육↑ 체지방↓</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="target-weight">목표 몸무게 (kg)</label>
+            <input type="number" id="target-weight" name="targetWeight" placeholder="예: 68" min="30" max="200" required />
+          </div>
+          <div class="form-field">
+            <label for="period">목표 기간</label>
+            <select id="period" name="period" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="1개월">1개월</option>
+              <option value="2개월">2개월</option>
+              <option value="3개월">3개월</option>
+              <option value="6개월">6개월</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 식습관 -->
+        <div class="form-group-title">식습관 (선택)</div>
+        <div class="form-field">
+          <label for="dislike">못 먹는 음식 또는 알레르기</label>
+          <input type="text" id="dislike" name="dislike" placeholder="예: 견과류, 유제품 (없으면 비워두세요)" />
+        </div>
+        <div class="form-field">
+          <label for="activity">활동 수준</label>
+          <select id="activity" name="activity" required>
+            <option value="" disabled selected>선택하세요</option>
+            <option value="거의 안 움직임">거의 안 움직임 (사무직, 운동 안 함)</option>
+            <option value="약간 활동적">약간 활동적 (주 1~2회 운동)</option>
+            <option value="보통 활동적">보통 활동적 (주 3~4회 운동)</option>
+            <option value="매우 활동적">매우 활동적 (주 5회 이상 운동)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-green btn-submit">AI 식단 플랜 생성하기 →</button>
+      </form>
+
+      <!-- RESULT -->
+      <div id="result-section" style="display:none;">
+        <div class="result-header">
+          <div class="result-label">YOUR PLAN</div>
+          <h2>맞춤 <span class="green">식단 플랜</span></h2>
+        </div>
+        <div id="result-content" class="result-content"></div>
+        <button class="btn-outline" onclick="resetForm()">다시 만들기</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <div class="loading-overlay" id="loading" style="display:none;">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <p>AI가 맞춤 식단을 분석 중입니다...</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">planfit</div>
+    <p>AI 기반 맞춤 식단 플래너 · 건강한 변화의 시작</p>
+    <p class="footer-info">사업장주소: 경기 성남시 수정구 고등로 34 &nbsp;|&nbsp; 대표자 이메일: gundahee6241@gmail.com</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

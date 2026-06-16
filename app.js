@@ -1,4 +1,4 @@
-const form = document.getElementById("planfit-form");
+ const form = document.getElementById("planfit-form");
 const loading = document.getElementById("loading");
 const resultSection = document.getElementById("result-section");
 const resultContent = document.getElementById("result-content");
@@ -93,7 +93,18 @@ if (form) {
 
       const json = await res.json();
       const raw = json.result.trim().replace(/```json|```/g, "").trim();
-      const data2 = JSON.parse(raw);
+
+      let data2;
+      try {
+        data2 = JSON.parse(raw);
+      } catch (parseErr) {
+        // JSON 파싱 실패시 원문 텍스트로 보여주기
+        loading.style.display = "none";
+        resultContent.innerHTML = `<div style="white-space:pre-wrap;line-height:1.9">${raw}</div>`;
+        resultSection.style.display = "block";
+        resultSection.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
 
       loading.style.display = "none";
       renderResult(data2);

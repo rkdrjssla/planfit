@@ -448,14 +448,53 @@ nav {
 .result-content {
   background: var(--bg3);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--green);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 36px;
   font-size: 15px;
   line-height: 1.9;
-  white-space: pre-wrap;
   word-break: keep-all;
 }
+
+.result-content h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green);
+  margin: 32px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.result-content h2:first-child { margin-top: 0; }
+
+.result-content p { margin-bottom: 10px; color: var(--text); }
+
+.result-content strong { color: var(--green); font-weight: 700; }
+
+.result-content ul, .result-content ol {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+.result-content li { margin-bottom: 6px; color: var(--text); }
+
+.result-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.result-content th {
+  background: rgba(0,232,122,0.1);
+  color: var(--green);
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+.result-content td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.result-content tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
 
 /* ── LOADING ── */
 .loading-overlay {

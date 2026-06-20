@@ -177,6 +177,25 @@
         </div>
         <div id="result-content" class="result-content"></div>
         <button class="btn-outline" onclick="resetForm()">다시 만들기</button>
+
+        <!-- FEEDBACK -->
+        <div class="feedback-box" id="feedback-box">
+          <div class="feedback-title">💬 이 플랜 어떠셨나요?</div>
+          <p class="feedback-desc">솔직한 피드백이 서비스를 더 좋게 만들어요</p>
+
+          <div class="rating-group">
+            <button class="rating-btn" data-score="1">😞<span>별로</span></button>
+            <button class="rating-btn" data-score="2">😐<span>보통</span></button>
+            <button class="rating-btn" data-score="3">🙂<span>괜찮아요</span></button>
+            <button class="rating-btn" data-score="4">😊<span>좋아요</span></button>
+            <button class="rating-btn" data-score="5">🔥<span>최고예요</span></button>
+          </div>
+
+          <textarea id="feedback-text" class="feedback-textarea" placeholder="개선사항이나 요청사항을 자유롭게 적어주세요 (선택)"></textarea>
+
+          <button class="btn-green feedback-submit" id="feedback-submit" onclick="submitFeedback()">피드백 보내기</button>
+          <div id="feedback-done" class="feedback-done" style="display:none;">✅ 소중한 의견 감사합니다! 더 좋은 서비스로 보답할게요 🙏</div>
+        </div>
       </div>
 
     </div>

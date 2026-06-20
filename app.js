@@ -186,5 +186,59 @@ function stopLoadingAnimation(success) {
 function resetForm() {
   if (form) form.reset();
   if (resultSection) resultSection.style.display = "none";
+  resetFeedback();
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ── 피드백 ── */
+let selectedScore = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".rating-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      selectedScore = parseInt(btn.dataset.score);
+      document.querySelectorAll(".rating-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+    });
+  });
+});
+
+async function submitFeedback() {
+  const text = document.getElementById("feedback-text").value.trim();
+  const submitBtn = document.getElementById("feedback-submit");
+
+  if (!selectedScore) {
+    alert("만족도를 선택해주세요 😊");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "전송 중...";
+
+  const scoreLabels = { 1: "😞 별로", 2: "😐 보통", 3: "🙂 괜찮아요", 4: "😊 좋아요", 5: "🔥 최고예요" };
+
+  try {
+    await fetch("https://formspree.io/f/meewepje", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        만족도: scoreLabels[selectedScore],
+        의견: text || "(없음)",
+      }),
+    });
+  } catch (_) {}
+
+  submitBtn.style.display = "none";
+  document.getElementById("feedback-done").style.display = "block";
+}
+
+function resetFeedback() {
+  selectedScore = 0;
+  const text = document.getElementById("feedback-text");
+  const done = document.getElementById("feedback-done");
+  const submitBtn = document.getElementById("feedback-submit");
+  if (text) text.value = "";
+  if (done) done.style.display = "none";
+  if (submitBtn) { submitBtn.style.display = "inline-block"; submitBtn.disabled = false; submitBtn.textContent = "피드백 보내기"; }
+  document.querySelectorAll(".rating-btn").forEach(b => b.classList.remove("selected"));
 }

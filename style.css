@@ -874,6 +874,118 @@ footer p { font-size: 14px; color: var(--muted); }
   color: #ff6b35;
 }
 
+/* ── FEEDBACK ── */
+.feedback-box {
+  margin-top: 40px;
+  background: linear-gradient(160deg, #1a1a1a, #141414);
+  border: 1px solid var(--border-bright);
+  border-radius: 20px;
+  padding: 36px 40px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+.feedback-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.feedback-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.rating-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.rating-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 18px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 28px;
+  min-width: 72px;
+  color: var(--text);
+}
+
+.rating-btn span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  font-family: var(--font);
+}
+
+.rating-btn:hover {
+  border-color: rgba(0,232,122,0.4);
+  transform: translateY(-3px);
+}
+
+.rating-btn.selected {
+  border-color: var(--green);
+  background: rgba(0,232,122,0.1);
+  box-shadow: 0 0 0 3px var(--green-glow-sm);
+  transform: translateY(-3px);
+}
+
+.rating-btn.selected span {
+  color: var(--green);
+}
+
+.feedback-textarea {
+  width: 100%;
+  min-height: 110px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 14px 16px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 20px;
+}
+
+.feedback-textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-glow-sm);
+}
+
+.feedback-textarea::placeholder { color: #3a3a3a; }
+
+.feedback-submit {
+  padding: 14px 40px;
+  font-size: 15px;
+}
+
+.feedback-done {
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--green);
+  font-weight: 600;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   nav { padding: 0 24px; }

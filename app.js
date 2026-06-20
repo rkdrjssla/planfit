@@ -1,4 +1,4 @@
-const form = document.getElementById("planfit-form");
+const form = document.getElementById("calofit-form");
 const loading = document.getElementById("loading");
 const resultSection = document.getElementById("result-section");
 const resultContent = document.getElementById("result-content");

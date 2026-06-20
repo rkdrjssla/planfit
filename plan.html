@@ -115,20 +115,76 @@
         </div>
 
         <!-- 식습관 -->
-        <div class="form-group-title">식습관 (선택)</div>
+        <div class="form-group-title">식습관</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="activity">활동 수준</label>
+            <select id="activity" name="activity" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="거의 안 움직임">거의 안 움직임 (사무직, 운동 안 함)</option>
+              <option value="약간 활동적">약간 활동적 (주 1~2회 운동)</option>
+              <option value="보통 활동적">보통 활동적 (주 3~4회 운동)</option>
+              <option value="매우 활동적">매우 활동적 (주 5회 이상 운동)</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="meals">하루 식사 횟수</label>
+            <select id="meals" name="meals" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="1끼">1끼 (간헐적 단식)</option>
+              <option value="2끼">2끼</option>
+              <option value="3끼">3끼</option>
+              <option value="4끼 이상">4끼 이상 (소식 다식)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cooking">요리 가능 여부</label>
+            <select id="cooking" name="cooking" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="직접 요리 가능">직접 요리 가능</option>
+              <option value="간단한 요리만 가능">간단한 요리만 가능</option>
+              <option value="배달/외식 위주">배달 / 외식 위주</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="foodstyle">선호 식단 스타일</label>
+            <select id="foodstyle" name="foodstyle" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="한식 위주">한식 위주</option>
+              <option value="양식 위주">양식 위주</option>
+              <option value="상관없음">상관없음</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="health">건강 이슈</label>
+            <select id="health" name="health" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="없음">없음</option>
+              <option value="고혈압">고혈압</option>
+              <option value="당뇨">당뇨</option>
+              <option value="소화 약함">소화 약함</option>
+              <option value="관절 문제">관절 문제</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="sleep">하루 평균 수면 시간</label>
+            <select id="sleep" name="sleep" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="5시간 미만">5시간 미만</option>
+              <option value="5~6시간">5~6시간</option>
+              <option value="6~7시간">6~7시간</option>
+              <option value="7~8시간">7~8시간</option>
+              <option value="8시간 이상">8시간 이상</option>
+            </select>
+          </div>
+        </div>
         <div class="form-field">
           <label for="dislike">못 먹는 음식 또는 알레르기</label>
           <input type="text" id="dislike" name="dislike" placeholder="예: 견과류, 유제품 (없으면 비워두세요)" />
-        </div>
-        <div class="form-field">
-          <label for="activity">활동 수준</label>
-          <select id="activity" name="activity" required>
-            <option value="" disabled selected>선택하세요</option>
-            <option value="거의 안 움직임">거의 안 움직임 (사무직, 운동 안 함)</option>
-            <option value="약간 활동적">약간 활동적 (주 1~2회 운동)</option>
-            <option value="보통 활동적">보통 활동적 (주 3~4회 운동)</option>
-            <option value="매우 활동적">매우 활동적 (주 5회 이상 운동)</option>
-          </select>
         </div>
 
         <!-- 생활/경력 정보 -->
@@ -177,6 +233,13 @@
           <h2>맞춤 <span class="green">식단 플랜</span></h2>
         </div>
         <div id="result-content" class="result-content"></div>
+
+        <!-- 추천 식재료 이미지 -->
+        <div id="food-images" class="food-images-section" style="display:none;">
+          <div class="food-images-title">🥗 이런 음식으로 구성해보세요</div>
+          <div class="food-images-grid" id="food-images-grid"></div>
+        </div>
+
         <button class="btn-outline" onclick="resetForm()">다시 만들기</button>
 
         <!-- FEEDBACK -->

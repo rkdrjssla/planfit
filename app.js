@@ -17,6 +17,11 @@ if (form) {
       period: form.period.value,
       dislike: form.dislike.value || "없음",
       activity: form.activity.value,
+      meals: form.meals.value,
+      cooking: form.cooking.value,
+      foodstyle: form.foodstyle.value,
+      health: form.health.value,
+      sleep: form.sleep.value,
       budget: form.budget.value,
       occupation: form.occupation.value,
       experience: form.experience.value,
@@ -35,6 +40,11 @@ if (form) {
 - 성별: ${data.gender} / 나이: ${data.age}세 / 키: ${data.height}cm / 현재 몸무게: ${data.weight}kg
 - 목표 몸무게: ${data.targetWeight}kg / 목표: ${data.goal} / 기간: ${data.period}
 - 활동 수준: ${data.activity}
+- 하루 식사 횟수: ${data.meals}
+- 요리 가능 여부: ${data.cooking}
+- 선호 식단 스타일: ${data.foodstyle}
+- 건강 이슈: ${data.health}
+- 평균 수면 시간: ${data.sleep}
 - 못 먹는 음식: ${data.dislike}
 - 하루 식비 예산: ${data.budget}
 - 직업/생활패턴: ${data.occupation}
@@ -120,6 +130,7 @@ if (form) {
         loading.style.display = "none";
         resultContent.innerHTML = marked.parse(json.result);
         resultSection.style.display = "block";
+        showFoodImages(data.goal);
         resultSection.scrollIntoView({ behavior: "smooth" });
       }, 600);
 
@@ -230,6 +241,47 @@ async function submitFeedback() {
 
   submitBtn.style.display = "none";
   document.getElementById("feedback-done").style.display = "block";
+}
+
+/* ── 음식 이미지 ── */
+const foodImages = {
+  "다이어트": [
+    { url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80", label: "채소 샐러드" },
+    { url: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80", label: "닭가슴살" },
+    { url: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80", label: "고구마" },
+    { url: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&q=80", label: "그릭요거트" },
+    { url: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=400&q=80", label: "계란" },
+    { url: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80", label: "현미밥" },
+  ],
+  "벌크업": [
+    { url: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&q=80", label: "스테이크" },
+    { url: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80", label: "현미밥" },
+    { url: "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?w=400&q=80", label: "연어" },
+    { url: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=400&q=80", label: "계란" },
+    { url: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&q=80", label: "그릭요거트" },
+    { url: "https://images.unsplash.com/photo-1571748982800-fa51082c2224?w=400&q=80", label: "바나나" },
+  ],
+  "린매스업": [
+    { url: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80", label: "닭가슴살" },
+    { url: "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?w=400&q=80", label: "연어" },
+    { url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80", label: "채소 샐러드" },
+    { url: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80", label: "고구마" },
+    { url: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=400&q=80", label: "계란" },
+    { url: "https://images.unsplash.com/photo-1571748982800-fa51082c2224?w=400&q=80", label: "바나나" },
+  ],
+};
+
+function showFoodImages(goal) {
+  const section = document.getElementById("food-images");
+  const grid = document.getElementById("food-images-grid");
+  const images = foodImages[goal] || foodImages["다이어트"];
+  grid.innerHTML = images.map(img => `
+    <div class="food-img-card">
+      <img src="${img.url}" alt="${img.label}" loading="lazy" />
+      <span>${img.label}</span>
+    </div>
+  `).join("");
+  section.style.display = "block";
 }
 
 function resetFeedback() {

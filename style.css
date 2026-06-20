@@ -454,16 +454,46 @@ nav {
 }
 .form-field input::placeholder { color: #3a3a3a; }
 
-.radio-group { display: flex; gap: 20px; padding: 10px 0; }
-
-.radio-label {
+.gender-group {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  cursor: pointer;
+  gap: 10px;
+  padding: 4px 0;
 }
-.radio-label input { accent-color: var(--green); width: 16px; height: 16px; }
+
+.gender-btn {
+  cursor: pointer;
+  flex: 1;
+}
+
+.gender-btn input {
+  display: none;
+}
+
+.gender-btn span {
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.gender-btn:hover span {
+  border-color: rgba(0,232,122,0.35);
+  color: #fff;
+}
+
+.gender-btn input:checked + span {
+  background: rgba(0,232,122,0.12);
+  border-color: var(--green);
+  color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-glow-sm);
+  font-weight: 700;
+}
 
 /* Goal Cards */
 .goal-group {

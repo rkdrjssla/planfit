@@ -1033,14 +1033,83 @@ footer p { font-size: 14px; color: var(--muted); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
-  .hero-content { padding: 0 24px; }
-  .how, .examples, .plan-section { padding: 80px 24px; }
-  .feature { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
-  .plan-hero { padding: 100px 24px 48px; }
-  .steps, .example-cards { grid-template-columns: 1fr; }
-  .food-images-grid { grid-template-columns: repeat(3, 1fr); }
-  .form-row { grid-template-columns: 1fr; }
-  .goal-group { grid-template-columns: 1fr; }
-  footer { padding: 40px 24px; }
+
+  /* 네비게이션 */
+  nav { padding: 0 20px; height: 56px; }
+  .logo { font-size: 18px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 13px; }
+
+  /* 히어로 */
+  .hero { min-height: 100svh; }
+  .hero-content { padding: 0 20px; max-width: 100%; }
+  .hero-content h1 { font-size: 28px; margin-bottom: 14px; }
+  .hero-content p { font-size: 15px; margin-bottom: 28px; }
+
+  /* 섹션 패딩 */
+  .how { padding: 60px 20px; }
+  .examples { padding: 60px 20px; }
+  .plan-section { padding: 40px 20px 80px; }
+  .feature { grid-template-columns: 1fr; padding: 60px 20px; gap: 32px; }
+  .plan-hero { padding: 88px 20px 36px; }
+
+  /* 스텝/예시 카드 */
+  .steps { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
+  .step-card { padding: 28px 20px; }
+  .example-cards { grid-template-columns: 1fr; gap: 12px; }
+
+  /* 폼 */
+  .plan-container { max-width: 100%; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-group-title { margin: 32px 0 16px; font-size: 10px; }
+  .form-field input,
+  .form-field select { font-size: 16px; padding: 13px 14px; } /* 16px 미만이면 iOS가 자동 줌인 */
+
+  /* 목표 카드 */
+  .goal-group { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .goal-content { padding: 14px 6px; }
+  .goal-icon { font-size: 20px; }
+  .goal-name { font-size: 12px; }
+  .goal-desc { font-size: 10px; }
+
+  /* 성별 버튼 */
+  .gender-group { gap: 8px; }
+  .gender-btn span { padding: 11px 12px; font-size: 14px; }
+
+  /* 제출 버튼 */
+  .btn-submit { font-size: 15px; padding: 16px; margin-top: 24px; }
+  .btn-green { font-size: 14px; padding: 12px 28px; }
+  .btn-outline { font-size: 14px; padding: 11px 24px; }
+
+  /* 결과 */
+  .result-content { padding: 24px 18px; font-size: 14px; border-radius: 14px; }
+  .result-content h2 { font-size: 15px; }
+  .result-content table { font-size: 12px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .result-content th,
+  .result-content td { padding: 8px 10px; white-space: nowrap; }
+  .result-header h2 { font-size: 24px; }
+
+  /* 음식 이미지 */
+  .food-images-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .food-img-card span { font-size: 11px; }
+
+  /* 피드백 */
+  .feedback-box { padding: 24px 20px; }
+  .rating-group { gap: 6px; }
+  .rating-btn { padding: 10px 10px; font-size: 22px; min-width: 54px; }
+  .rating-btn span { font-size: 10px; }
+
+  /* 푸터 */
+  footer { padding: 36px 20px; }
+  footer p { font-size: 13px; }
+  .footer-info { font-size: 11px !important; }
+
+  /* 로딩 */
+  .loading-box { padding: 36px 28px; min-width: 280px; }
+  .progress-wrap { width: 220px; }
+
+  /* 피처 섹션 */
+  .feature-stats { gap: 28px; }
+  .fstat-num { font-size: 26px; }
+  .mock-card { padding: 20px; }
 }

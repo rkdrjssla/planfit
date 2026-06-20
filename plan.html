@@ -124,6 +124,42 @@
           </select>
         </div>
 
+        <!-- 생활/경력 정보 -->
+        <div class="form-group-title">생활 &amp; 경력 정보</div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="budget">하루 식비 예산</label>
+            <select id="budget" name="budget" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="1만원 이하">1만원 이하</option>
+              <option value="1~2만원">1~2만원</option>
+              <option value="2~3만원">2~3만원</option>
+              <option value="3만원 이상">3만원 이상</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="occupation">직업 / 생활 패턴</label>
+            <select id="occupation" name="occupation" required>
+              <option value="" disabled selected>선택하세요</option>
+              <option value="사무직/재택근무">사무직 / 재택근무</option>
+              <option value="학생">학생</option>
+              <option value="육체노동">육체노동 (배달, 공사 등)</option>
+              <option value="자유직업/불규칙">자유직업 / 불규칙한 스케줄</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="experience">운동 경력</label>
+          <select id="experience" name="experience" required>
+            <option value="" disabled selected>선택하세요</option>
+            <option value="헬스 처음">헬스 처음 (입문)</option>
+            <option value="6개월 미만">6개월 미만</option>
+            <option value="6개월~1년">6개월 ~ 1년</option>
+            <option value="1~3년">1년 ~ 3년</option>
+            <option value="3년 이상">3년 이상</option>
+          </select>
+        </div>
+
         <button type="submit" class="btn-green btn-submit">AI 식단 플랜 생성하기 →</button>
       </form>
 

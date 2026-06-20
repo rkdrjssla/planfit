@@ -17,6 +17,9 @@ if (form) {
       period: form.period.value,
       dislike: form.dislike.value || "없음",
       activity: form.activity.value,
+      budget: form.budget.value,
+      occupation: form.occupation.value,
+      experience: form.experience.value,
     };
 
     if (!data.gender || !data.goal) {
@@ -33,6 +36,9 @@ if (form) {
 - 목표 몸무게: ${data.targetWeight}kg / 목표: ${data.goal} / 기간: ${data.period}
 - 활동 수준: ${data.activity}
 - 못 먹는 음식: ${data.dislike}
+- 하루 식비 예산: ${data.budget}
+- 직업/생활패턴: ${data.occupation}
+- 운동 경력: ${data.experience}
 
 아래 형식으로 작성해주세요. 각 섹션은 ## 제목으로 구분하고, 핵심만 간결하게 작성하세요.
 
@@ -66,6 +72,22 @@ if (form) {
 | 일 | 휴식 | - | - |
 
 ## 💡 핵심 전략
+1. ...
+2. ...
+3. ...
+
+## 💊 보충제 추천
+| 보충제 | 목적 | 복용 타이밍 | 우선순위 |
+|--------|------|------------|---------|
+| ... | ... | ... | 필수/선택 |
+
+## 📈 주차별 변화 플랜
+| 주차 | 칼로리 | 운동 강도 | 목표 체중 | 포인트 |
+|------|--------|---------|---------|--------|
+| 1~2주 | ... | ... | ...kg | ... |
+| 3~4주 | ... | ... | ...kg | ... |
+
+## 🔄 정체기 대처법
 1. ...
 2. ...
 3. ...

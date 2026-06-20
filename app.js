@@ -99,6 +99,7 @@ if (form) {
 
     loading.style.display = "flex";
     resultSection.style.display = "none";
+    startLoadingAnimation();
 
     try {
       const res = await fetch("/api/generate", {
@@ -114,16 +115,72 @@ if (form) {
 
       const json = await res.json();
 
-      loading.style.display = "none";
-      resultContent.innerHTML = marked.parse(json.result);
-      resultSection.style.display = "block";
-      resultSection.scrollIntoView({ behavior: "smooth" });
+      stopLoadingAnimation(true);
+      setTimeout(() => {
+        loading.style.display = "none";
+        resultContent.innerHTML = marked.parse(json.result);
+        resultSection.style.display = "block";
+        resultSection.scrollIntoView({ behavior: "smooth" });
+      }, 600);
 
     } catch (err) {
+      stopLoadingAnimation(false);
       loading.style.display = "none";
       alert("오류: " + err.message);
     }
   });
+}
+
+/* ── 로딩 애니메이션 ── */
+let _loadingTimer = null;
+
+function startLoadingAnimation() {
+  const steps = [
+    { pct: 8,  msg: "📋 신체 정보 분석 중..." },
+    { pct: 20, msg: "🔥 칼로리 계산 중..." },
+    { pct: 35, msg: "🍽️ 맞춤 식단 구성 중..." },
+    { pct: 50, msg: "💪 운동 루틴 작성 중..." },
+    { pct: 63, msg: "📅 주간 스케줄 설계 중..." },
+    { pct: 75, msg: "💊 보충제 추천 분석 중..." },
+    { pct: 85, msg: "📈 주차별 변화 플랜 생성 중..." },
+    { pct: 93, msg: "🔄 정체기 대처 전략 수립 중..." },
+    { pct: 98, msg: "✅ 마무리 검토 중..." },
+  ];
+
+  const msgEl  = document.getElementById("loading-msg");
+  const barEl  = document.getElementById("progress-bar");
+  const pctEl  = document.getElementById("progress-pct");
+
+  let i = 0;
+  const intervals = [800, 1200, 1500, 1800, 1400, 1600, 1500, 1400, 99999];
+
+  function next() {
+    if (i >= steps.length) return;
+    const s = steps[i];
+    msgEl.style.opacity = 0;
+    setTimeout(() => {
+      msgEl.textContent = s.msg;
+      msgEl.style.opacity = 1;
+    }, 150);
+    barEl.style.width = s.pct + "%";
+    pctEl.textContent = s.pct + "%";
+    i++;
+    _loadingTimer = setTimeout(next, intervals[i - 1]);
+  }
+
+  next();
+}
+
+function stopLoadingAnimation(success) {
+  clearTimeout(_loadingTimer);
+  const msgEl = document.getElementById("loading-msg");
+  const barEl  = document.getElementById("progress-bar");
+  const pctEl  = document.getElementById("progress-pct");
+  if (success) {
+    barEl.style.width = "100%";
+    pctEl.textContent = "100%";
+    msgEl.textContent = "🎉 플랜 완성!";
+  }
 }
 
 function resetForm() {
